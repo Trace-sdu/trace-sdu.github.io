@@ -68,18 +68,19 @@ a:focus-visible { outline: 2px solid var(--link); outline-offset: 4px; }
   flex-wrap: wrap;
   justify-content: center;
   gap: 0 clamp(.125rem, 2vw, 1.25rem);
+  padding-inline: .5rem;
+  background: #50164A;
 }
 .site-nav > a, .people-menu summary {
   padding: .55rem clamp(.4rem, 1.5vw, 1.1rem);
   border-bottom: 2px solid transparent;
-  color: var(--ink);
+  color: #fff;
   text-decoration: none;
 }
 .site-nav > a:hover, .site-nav > a[aria-current="page"],
 .people-menu summary:hover, .people-menu[open] summary,
 .people-menu:has(a[aria-current="page"]) summary {
   border-bottom-color: currentColor;
-  color: var(--link);
 }
 
 .people-menu { position: relative; }
@@ -99,7 +100,10 @@ a:focus-visible { outline: 2px solid var(--link); outline-offset: 4px; }
   border-bottom: 1px solid currentColor;
   transform: translateY(-.1rem) rotate(45deg);
 }
-.people-menu summary:focus-visible { outline: 2px solid var(--link); outline-offset: 2px; }
+.site-nav > a:focus-visible, .people-menu summary:focus-visible {
+  outline: 2px solid #fff;
+  outline-offset: -4px;
+}
 .people-menu ul {
   position: absolute;
   z-index: 2;

@@ -198,6 +198,12 @@ p { max-width: 68ch; margin: .8rem 0 0; }
 
 .content-section p { color: var(--muted); }
 
+.research-highlight { max-width: 52rem; }
+.research-highlight > p { max-width: none; }
+.research-highlight h3 { margin: 1.25rem 0 0; font-size: 1rem; }
+.research-papers { margin: .45rem 0 0; padding-inline-start: 1.25rem; }
+.research-papers li + li { margin-top: .4rem; }
+
 .profile-content { max-width: 52rem; margin-inline: auto; }
 .profile-parent { margin: 0 0 1rem; font-size: .9375rem; }
 

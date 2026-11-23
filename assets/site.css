@@ -326,6 +326,16 @@ p { max-width: 68ch; margin: .8rem 0 0; }
 .member-profile h3 { margin: 0; font-size: 1.125rem; }
 .member-profile p { margin-top: .25rem; max-width: none; }
 .member-year { color: var(--muted); font-weight: 400; white-space: nowrap; }
+.member-email { overflow-wrap: anywhere; }
+.member-initials {
+  display: grid;
+  place-items: center;
+  aspect-ratio: 3 / 4;
+  background: #f3f5f7;
+  color: var(--muted);
+  font-size: 1.25rem;
+  font-weight: 650;
+}
 
 .alumni-table {
   width: 100%;

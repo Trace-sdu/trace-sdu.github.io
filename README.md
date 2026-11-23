@@ -1,6 +1,6 @@
-# Trace Research
+# TRACE
 
-A static academic website for GitHub Pages. The site uses HTML and CSS and requires no build step.
+The academic website of the Team for Research on Atmospheric Chemistry & Environment (TRACE). The site uses HTML and CSS and requires no build step.
 
 | Page | File |
 | --- | --- |

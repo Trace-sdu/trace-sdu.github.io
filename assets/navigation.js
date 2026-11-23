@@ -28,3 +28,21 @@ document.addEventListener('keydown', event => {
   peopleMenu.open = false;
   event.preventDefault();
 });
+
+const topicLinks = [...document.querySelectorAll('.topic-nav a[href^="#"]')];
+
+if (topicLinks.length > 0) {
+  function selectTopic() {
+    const current = topicLinks.find(link => link.hash === location.hash) ?? topicLinks[0];
+    for (const link of topicLinks) {
+      if (link === current) {
+        link.setAttribute('aria-current', 'location');
+      } else {
+        link.removeAttribute('aria-current');
+      }
+    }
+  }
+
+  window.addEventListener('hashchange', selectTopic);
+  selectTopic();
+}

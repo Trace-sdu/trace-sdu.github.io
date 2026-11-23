@@ -1,5 +1,6 @@
 :root {
   color-scheme: light;
+  scrollbar-gutter: stable;
   --background: #fff;
   background-color: var(--background);
   --ink: #222b36;
@@ -144,13 +145,17 @@ h1 { font-size: clamp(1.85rem, 4vw, 2.45rem); letter-spacing: -.028em; }
 h2 { font-size: 1.25rem; font-weight: 700; letter-spacing: -.012em; }
 p { max-width: 68ch; margin: .8rem 0 0; }
 
-.home-layout {
+.home-layout,
+.publication-layout {
   display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(12rem, 15.5rem);
-  grid-template-areas: "topics index";
   gap: 2rem clamp(2rem, 5vw, 4rem);
   align-content: start;
   align-items: start;
+}
+
+.home-layout {
+  grid-template-columns: minmax(0, 1fr) minmax(12rem, 15.5rem);
+  grid-template-areas: "topics index";
 }
 
 .research-topics { grid-area: topics; }
@@ -203,6 +208,29 @@ p { max-width: 68ch; margin: .8rem 0 0; }
 .research-highlight h3 { margin: 1.25rem 0 0; font-size: 1rem; }
 .research-papers { margin: .45rem 0 0; padding-inline-start: 1.25rem; }
 .research-papers li + li { margin-top: .4rem; }
+
+.publication-sample { color: var(--muted); }
+
+.publication-layout {
+  grid-template-columns: minmax(0, 1fr) minmax(7.5rem, 10rem);
+  grid-template-areas: "years index";
+  margin-top: 1.75rem;
+}
+
+.publication-years { grid-area: years; }
+
+.publication-year {
+  padding-top: 1.2rem;
+  border-top: 1px solid var(--rule);
+  scroll-margin-top: 1.5rem;
+}
+
+.publication-year + .publication-year { margin-top: 2rem; }
+.publication-year h2 { font-size: clamp(1.35rem, 3vw, 1.7rem); }
+.publication-year:target h2 { color: var(--link); }
+.publication-year h3 { margin: 1rem 0 0; font-size: 1rem; }
+.publication-list { margin: .55rem 0 0; padding-inline-start: 1.25rem; }
+.publication-list li + li { margin-top: .55rem; }
 
 .profile-content { max-width: 52rem; margin-inline: auto; }
 .profile-parent { margin: 0 0 1rem; font-size: .9375rem; }
@@ -296,7 +324,14 @@ p { max-width: 68ch; margin: .8rem 0 0; }
     grid-template-columns: minmax(0, 1fr);
     grid-template-areas: "index" "topics";
   }
+  .publication-layout {
+    grid-template-columns: minmax(0, 1fr);
+    grid-template-areas: "index" "years";
+  }
   .topic-nav { position: static; }
+  .year-nav ul { display: flex; flex-wrap: wrap; gap: .2rem .35rem; }
+  .year-nav a { border-inline-start: 0; border-bottom: 2px solid var(--rule); }
+  .year-nav a[aria-current="location"] { border-bottom-color: var(--link); }
 }
 
 @media (max-width: 32rem) {

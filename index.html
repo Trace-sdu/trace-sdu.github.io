@@ -5,8 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="TRACE research on highly reactive gases, ocean–atmosphere chemical interactions, and the drivers and mitigation of ozone pollution.">
   <title>TRACE | Team for Research on Atmospheric Chemistry &amp; Environment</title>
-  <link rel="stylesheet" href="./assets/site.css?v=home-research-figures">
-  <script src="./assets/navigation.js" defer></script>
+  <link rel="stylesheet" href="./assets/site.css?v=publication-years">
+  <script src="./assets/navigation.js?v=year-navigation" defer></script>
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to research topics</a>
@@ -71,22 +71,5 @@
     <div class="wrap footer-inner"><span>TRACE</span><a href="https://github.com/Trace-sdu/trace-sdu.github.io">GitHub</a></div>
   </footer>
 
-  <script>
-    const topicLinks = [...document.querySelectorAll('.topic-nav a')];
-
-    function selectTopic() {
-      const current = topicLinks.find(link => link.hash === location.hash) ?? topicLinks[0];
-      for (const link of topicLinks) {
-        if (link === current) {
-          link.setAttribute('aria-current', 'location');
-        } else {
-          link.removeAttribute('aria-current');
-        }
-      }
-    }
-
-    window.addEventListener('hashchange', selectTopic);
-    selectTopic();
-  </script>
 </body>
 </html>

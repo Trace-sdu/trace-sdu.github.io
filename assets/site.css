@@ -50,48 +50,49 @@ a:focus-visible { outline: 2px solid var(--link); outline-offset: 4px; }
 
 .site-header { border-bottom: 1px solid var(--rule); }
 
-.header-inner {
-  min-height: 6.75rem;
-  display: flex;
+.masthead {
+  --emblem-width: clamp(3.5rem, 10vw, 7rem);
+  display: grid;
+  grid-template-columns: var(--emblem-width) minmax(0, 44rem) var(--emblem-width);
   align-items: center;
-  justify-content: space-between;
-  gap: clamp(.75rem, 3vw, 2rem);
-  padding-block: .85rem;
+  justify-content: center;
+  gap: clamp(.5rem, 3vw, 2.25rem);
+  padding-block: .7rem .15rem;
 }
 
-.brand {
+.brand { display: block; }
+
+.brand img, .university-logo {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+.university-logo { width: 85%; justify-self: center; }
+
+.brand-name {
+  margin: 0;
+  font-size: clamp(1rem, 2.5vw, 1.875rem);
+  font-weight: 700;
+  line-height: 1.25;
+  text-align: center;
+  text-wrap: balance;
+}
+
+.site-nav {
   display: flex;
-  align-items: center;
-  gap: clamp(.6rem, 2vw, 1.25rem);
-  min-width: 0;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0 clamp(.125rem, 2vw, 1.25rem);
+}
+.site-nav a {
+  padding: .55rem clamp(.4rem, 1.5vw, 1.1rem);
+  border-bottom: 2px solid transparent;
   color: var(--ink);
   text-decoration: none;
 }
-
-.brand img {
-  display: block;
-  flex: none;
-  width: clamp(5.25rem, 12vw, 8rem);
-  height: auto;
-}
-
-.brand-name {
-  max-width: 30ch;
-  font-size: clamp(1rem, 2vw, 1.375rem);
-  font-weight: 700;
-  line-height: 1.3;
-}
-
-.header-inner nav {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: flex-end;
-  gap: 0 clamp(.75rem, 3vw, 2.25rem);
-}
-.header-inner nav a { padding-block: .5rem; color: var(--ink); text-decoration: none; }
-.header-inner nav a:hover, .header-inner nav a[aria-current="page"] {
+.site-nav a:hover, .site-nav a[aria-current="page"] {
+  border-bottom-color: currentColor;
   color: var(--link);
-  text-decoration: underline;
 }
 
 main { padding-block: clamp(2.25rem, 5vw, 3.75rem) clamp(3.5rem, 8vw, 6rem); }
@@ -168,8 +169,7 @@ p { max-width: 68ch; margin: .8rem 0 0; }
 
 @media (max-width: 45rem) {
   .wrap { width: calc(100% - 2rem); }
-  .header-inner { min-height: auto; flex-wrap: wrap; gap: .5rem 1.25rem; }
-  .header-inner nav a { padding-block: .25rem; font-size: .875rem; }
+  .site-nav a { font-size: .875rem; }
   .home-layout {
     grid-template-columns: minmax(0, 1fr);
     grid-template-areas: "index" "topics";

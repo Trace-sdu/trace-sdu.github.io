@@ -42,23 +42,21 @@ a:focus-visible { outline: 2px solid var(--link); outline-offset: 4px; }
 .header-inner {
   min-height: 6.75rem;
   display: flex;
-  flex-wrap: wrap;
   align-items: center;
   justify-content: space-between;
-  gap: .5rem 2rem;
+  gap: clamp(.75rem, 3vw, 2rem);
   padding-block: .85rem;
 }
 
-.brand {
-  color: var(--ink);
-  font-size: clamp(1.625rem, 3.5vw, 2.25rem);
-  font-weight: 750;
-  letter-spacing: -.035em;
-  line-height: 1.2;
-  text-decoration: none;
+.brand { flex: none; }
+
+.brand img {
+  display: block;
+  width: clamp(5.25rem, 12vw, 8rem);
+  height: auto;
 }
 
-nav { display: flex; flex-wrap: wrap; gap: 0 clamp(1rem, 3vw, 2.25rem); }
+nav { display: flex; flex-wrap: wrap; justify-content: flex-end; gap: 0 clamp(.75rem, 3vw, 2.25rem); }
 nav a { padding-block: .5rem; color: var(--ink); text-decoration: none; }
 nav a:hover, nav a[aria-current="page"] { color: var(--link); text-decoration: underline; }
 
@@ -105,6 +103,7 @@ p { max-width: 68ch; margin: .8rem 0 0; }
 @media (max-width: 45rem) {
   .wrap { width: calc(100% - 2rem); }
   .header-inner { min-height: auto; }
+  nav a { padding-block: .25rem; font-size: .875rem; }
   .home-layout { grid-template-columns: 1fr; }
   .publication-summary {
     max-width: 44rem;

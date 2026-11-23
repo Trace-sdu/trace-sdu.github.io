@@ -235,6 +235,23 @@ p { max-width: 68ch; margin: .8rem 0 0; }
 .profile-publications p { max-width: none; margin-top: .1rem; color: var(--muted); }
 .publication-title { font-weight: 650; }
 
+.faculty-directory { margin-top: 1.75rem; }
+.faculty-profile {
+  display: grid;
+  grid-template-columns: clamp(9rem, 18vw, 13rem) minmax(0, 1fr);
+  align-items: start;
+  gap: clamp(1.5rem, 4vw, 3.5rem);
+  border-top: 1px solid var(--rule);
+  padding-block: 1.75rem;
+}
+.faculty-profile:last-child { padding-bottom: 0; }
+.faculty-portrait { display: block; width: 100%; height: auto; }
+.faculty-profile h2 { font-size: 1.5rem; }
+.faculty-position { margin-top: .6rem; font-weight: 650; }
+.faculty-email { margin-top: .15rem; }
+.faculty-email a { margin-inline-start: .35rem; }
+.faculty-link { margin-top: .55rem; }
+
 .site-footer { border-top: 1px solid var(--rule); }
 
 .footer-inner {
@@ -261,5 +278,7 @@ p { max-width: 68ch; margin: .8rem 0 0; }
 @media (max-width: 32rem) {
   .profile-intro { grid-template-columns: minmax(0, 1fr); }
   .profile-portrait { width: 8rem; }
+  .faculty-profile { grid-template-columns: minmax(0, 1fr); gap: 1rem; }
+  .faculty-portrait { width: 9rem; }
 }
 

@@ -325,6 +325,27 @@ p { max-width: 68ch; margin: .8rem 0 0; }
 .member-profile h3 { margin: 0; font-size: 1.125rem; }
 .member-profile p { margin-top: .25rem; max-width: none; }
 
+.alumni-table {
+  width: 100%;
+  margin-top: 1.5rem;
+  border-top: 1px solid var(--rule);
+  border-collapse: collapse;
+  table-layout: fixed;
+}
+
+.alumni-table th, .alumni-table td {
+  padding: .7rem .65rem;
+  border-bottom: 1px solid var(--rule);
+  text-align: start;
+  vertical-align: top;
+  overflow-wrap: break-word;
+}
+
+.alumni-table th:first-child { width: 23%; }
+.alumni-table th:nth-child(2) { width: 38%; }
+.alumni-table tbody th { font-weight: 650; }
+.alumni-term { color: var(--muted); white-space: nowrap; font-variant-numeric: tabular-nums; }
+
 .site-footer { border-top: 1px solid var(--rule); }
 
 .footer-inner {
@@ -364,5 +385,7 @@ p { max-width: 68ch; margin: .8rem 0 0; }
   .profile-portrait { width: 8rem; }
   .faculty-profile { grid-template-columns: minmax(0, 1fr); gap: 1rem; }
   .faculty-portrait { width: 9rem; }
+  .alumni-table th, .alumni-table td { padding: .55rem .35rem; font-size: .875rem; }
+  .alumni-table th:first-child { width: 26%; }
 }
 

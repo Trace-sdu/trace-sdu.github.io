@@ -64,6 +64,7 @@ a:focus-visible { outline: 2px solid var(--link); outline-offset: 4px; }
 }
 
 .site-nav {
+  --nav-current: #79346F;
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
@@ -81,6 +82,10 @@ a:focus-visible { outline: 2px solid var(--link); outline-offset: 4px; }
 .people-menu summary:hover, .people-menu[open] summary,
 .people-menu:has(a[aria-current="page"]) summary {
   border-bottom-color: currentColor;
+}
+
+.site-nav > a[aria-current="page"], .people-menu:has(a[aria-current="page"]) summary {
+  background: var(--nav-current);
 }
 
 .people-menu { position: relative; }
@@ -122,11 +127,16 @@ a:focus-visible { outline: 2px solid var(--link); outline-offset: 4px; }
   color: var(--ink);
   text-decoration: none;
 }
-.people-menu li a:hover, .people-menu li a[aria-current="page"] {
+.people-menu li a:hover {
   color: var(--link);
   text-decoration: underline;
 }
+.people-menu li a[aria-current="page"] {
+  background: var(--nav-current);
+  color: #fff;
+}
 .people-menu li a:focus-visible { outline-offset: -2px; }
+.people-menu li a[aria-current="page"]:focus-visible { outline-color: #fff; }
 
 main { padding-block: clamp(2.25rem, 5vw, 3.75rem) clamp(3.5rem, 8vw, 6rem); }
 h1, h2 { margin: 0; line-height: 1.25; }

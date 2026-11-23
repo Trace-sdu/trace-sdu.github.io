@@ -164,6 +164,7 @@ p { max-width: 68ch; margin: .8rem 0 0; }
 .research-topic h2 { font-size: clamp(1.25rem, 2.5vw, 1.625rem); }
 .research-topic p { max-width: 44rem; }
 .research-topic:target h2 { color: var(--link); }
+.research-figure { display: block; width: 100%; height: auto; margin-top: 1.25rem; }
 
 .topic-nav {
   grid-area: index;

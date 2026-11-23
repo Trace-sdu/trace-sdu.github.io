@@ -80,11 +80,11 @@ a:focus-visible { outline: 2px solid var(--link); outline-offset: 4px; }
 }
 .site-nav > a:hover, .site-nav > a[aria-current="page"],
 .people-menu summary:hover, .people-menu[open] summary,
-.people-menu:has(a[aria-current="page"]) summary {
+.people-menu:has(a[aria-current]) summary {
   border-bottom-color: currentColor;
 }
 
-.site-nav > a[aria-current="page"], .people-menu:has(a[aria-current="page"]) summary {
+.site-nav > a[aria-current="page"], .people-menu:has(a[aria-current]) summary {
   background: var(--nav-current);
 }
 
@@ -131,12 +131,12 @@ a:focus-visible { outline: 2px solid var(--link); outline-offset: 4px; }
   color: var(--link);
   text-decoration: underline;
 }
-.people-menu li a[aria-current="page"] {
+.people-menu li a[aria-current] {
   background: var(--nav-current);
   color: #fff;
 }
 .people-menu li a:focus-visible { outline-offset: -2px; }
-.people-menu li a[aria-current="page"]:focus-visible { outline-color: #fff; }
+.people-menu li a[aria-current]:focus-visible { outline-color: #fff; }
 
 main { padding-block: clamp(2.25rem, 5vw, 3.75rem) clamp(3.5rem, 8vw, 6rem); }
 h1, h2 { margin: 0; line-height: 1.25; }
@@ -198,6 +198,7 @@ p { max-width: 68ch; margin: .8rem 0 0; }
 .content-section p { color: var(--muted); }
 
 .profile-content { max-width: 52rem; margin-inline: auto; }
+.profile-parent { margin: 0 0 1rem; font-size: .9375rem; }
 
 .profile-intro {
   display: grid;
@@ -251,7 +252,6 @@ p { max-width: 68ch; margin: .8rem 0 0; }
 .faculty-position { margin-top: .6rem; font-weight: 650; }
 .faculty-email { margin-top: .15rem; }
 .faculty-email a { margin-inline-start: .35rem; }
-.faculty-link { margin-top: .55rem; }
 
 .site-footer { border-top: 1px solid var(--rule); }
 

@@ -52,7 +52,7 @@ a:focus-visible { outline: 2px solid var(--link); outline-offset: 4px; }
 
 .masthead {
   --emblem-width: clamp(3.75rem, 12vw, 9.5rem);
-  width: min(calc(100% - 3rem), 62.5rem);
+  width: min(calc(100% - 3rem), 78rem);
   display: grid;
   grid-template-columns: var(--emblem-width) minmax(0, 1fr) var(--emblem-width);
   align-items: center;
@@ -71,16 +71,25 @@ a:focus-visible { outline: 2px solid var(--link); outline-offset: 4px; }
 
 .brand-name {
   margin: 0;
-  font-size: clamp(1rem, 2.5vw, 1.875rem);
+  font-size: clamp(1rem, 1.85vw, 1.5rem);
   font-weight: 700;
   line-height: 1.25;
   text-align: center;
   text-wrap: balance;
 }
 
+.brand-title {
+  display: block;
+  margin-bottom: .25rem;
+  font-size: clamp(1.75rem, 4.5vw, 3rem);
+  font-weight: 850;
+  line-height: 1.1;
+  letter-spacing: .035em;
+}
+
 .brand-name-line { display: block; }
 .brand-word { display: inline-block; }
-.brand-word::first-letter { color: #9a171f; }
+.brand-word::first-letter { color: #164674; }
 
 .site-nav {
   display: flex;

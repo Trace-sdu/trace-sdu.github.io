@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="Research highlights from TRACE on atmospheric reactive nitrogen and marine atmospheric chemistry.">
   <title>Research | TRACE</title>
-  <link rel="stylesheet" href="../assets/site.css?v=publication-years">
+  <link rel="stylesheet" href="../assets/site.css?v=research-figures">
   <script src="../assets/navigation.js" defer></script>
 </head>
 <body>
@@ -37,30 +37,110 @@
 
     <section class="content-section research-highlight" id="reactive-nitrogen" aria-labelledby="reactive-nitrogen-title">
       <h2 id="reactive-nitrogen-title">Atmospheric Reactive Nitrogen</h2>
-      <p>Nitrous acid (HONO) supplies hydroxyl radicals that drive daytime atmospheric oxidation. Measurements in the Yellow River Delta, on Mount Tai, and along the Qingdao coast showed that HONO peaked at different times of day. A chemical box model reproduced the inland observations. The daytime peaks at the coastal sites pointed to a missing source linked to sunlight and tidal conditions.</p>
-      <p>Over the contiguous United States, explainable machine learning mapped nitrate, ammonium, and sulfate wet deposition at 0.1° resolution. From 2002 to 2017, nitrate and sulfate deposition declined, and ammonium deposition increased most strongly over agricultural land.</p>
-      <p>A synthesis of about 1,700 isotope measurements from 1956 to 2023 characterized the signatures of nitrogen emissions from combustion, agriculture, and other sources. Comparing those signatures across regions and over time helps distinguish changes in emissions from changes in atmospheric processing.</p>
+      <p>Reactive nitrogen drives atmospheric oxidation and carries nitrogen from emissions to ecosystems. Field observations, statistical modeling, and stable isotopes help identify where these compounds come from, how they change in the air, and where they are deposited.</p>
 
-      <h3>Publications</h3>
-      <ul class="research-papers">
-        <li>Xuelian Zhong (2026). <a href="https://doi.org/10.1021/acs.est.6c01752">Atmospheric Nitrous Acid in Contrasting Environments in North China</a>. <cite>Environmental Science &amp; Technology</cite>.</li>
-        <li>Jiangshan Mu (2026). <a href="https://doi.org/10.1021/acs.est.5c17006">Explainable Machine Learning for High-Resolution Modeling of Long-Term Atmospheric Nitrogen and Sulfur Wet Deposition across the United States</a>. <cite>Environmental Science &amp; Technology</cite>.</li>
-        <li>Haoxin Sui (2026). <a href="https://doi.org/10.1021/acsestair.4c00335">Isotope-Based Tracing of Atmospheric Reactive Nitrogen: Progress and Prospects</a>. <cite>ACS ES&amp;T Air</cite>.</li>
+      <div class="research-study">
+        <div>
+          <h3>Nitrous Acid Sources across North China</h3>
+          <p>Sunlight breaks down nitrous acid (HONO) to release hydroxyl radicals (OH), which initiate many of the reactions that form ozone and secondary particles. An observation-based chemical box model was used to compare four sites in northern China. These included an urban site in the Yellow River Delta, a high-altitude site on Mount Tai, and two sites at different distances from the coast in Qingdao.</p>
+          <p>In the modeled HONO budget, nitrate photolysis accounted for 45% of production at the urban site and 84% on Mount Tai. Reactions of nitrogen dioxide at the ground surface supplied another 22% at the urban site. The model underestimated the daytime peaks at both coastal sites, suggesting an additional marine source that varied with the tides. HONO supplied an estimated 31–57% of daytime OH production across the sites, so missing sources can also affect estimates of coastal ozone formation.</p>
+        </div>
+        <figure class="research-study-figure">
+          <img src="../assets/research/highlights/hono-source-budgets.jpeg" width="815" height="520" alt="Three panels trace pathways from nitrogen oxides and particulate nitrate to nitrous acid in urban, mountain, and coastal environments.">
+          <figcaption>HONO production pathways and their estimated contributions at the study sites.</figcaption>
+        </figure>
+      </div>
+
+      <div class="research-study">
+        <div>
+          <h3>Mapping Nitrogen and Sulfur Wet Deposition</h3>
+          <p>Precipitation removes dissolved nitrogen and sulfur from the atmosphere and delivers them to land and water. Across the contiguous United States, a machine learning model combined monitoring data with meteorology, emissions, and land-use information to reconstruct wet deposition of nitrate, ammonium, and sulfate from 2002 to 2017 at 0.1° × 0.1° resolution.</p>
+          <p>The XGBoost model captured spatial and seasonal patterns in the measurements. SHAP analysis was used to interpret how precipitation, emissions, and other inputs shaped the predictions. Nitrate and sulfate deposition declined over the study period. Ammonium deposition increased by about 13% overall and by about 17% over agricultural landscapes. This divergence highlights the growing importance of agricultural ammonia when assessing the effects of emission controls on nitrogen deposition.</p>
+        </div>
+        <figure class="research-study-figure">
+          <img src="../assets/research/highlights/wet-deposition-model.png" width="815" height="385" alt="Workflow connecting observations and model training to deposition maps, driver attribution, and land-use comparisons." loading="lazy">
+          <figcaption>Machine learning workflow for mapping wet deposition and identifying its drivers.</figcaption>
+        </figure>
+      </div>
+
+      <div class="research-study">
+        <div>
+          <h3>Tracing Reactive Nitrogen with Stable Isotopes</h3>
+          <p>A synthesis of nearly 1,700 isotope measurements published between 1956 and 2023 examined reactive nitrogen in East Asia, North America, Europe, and other regions. The database brings together isotope signatures from sources such as coal combustion, traffic, biomass burning, and agriculture, along with measurements of atmospheric gases, particles, and deposition.</p>
+          <p>Combustion sources generally had higher nitrogen-15 signatures than noncombustion sources. Isotope ratios also changed as gases formed particles and as precipitation removed them, so source attribution must account for these transformations. Nitrate oxygen isotope ratios varied with latitude, providing clues to the oxidants involved in its formation. In East Asia, nitrate nitrogen isotope ratios peaked around 2017 and then declined, a pattern consistent with changes in fuel use and emission controls.</p>
+        </div>
+        <figure class="research-study-figure">
+          <img src="../assets/research/highlights/reactive-nitrogen-isotopes.png" width="816" height="458" alt="Schematic of nitrogen emissions and reactions flanked by isotope fingerprints and time series for nitrate and ammonium." loading="lazy">
+          <figcaption>Isotope fingerprints of emission sources and long-term changes in atmospheric reactive nitrogen.</figcaption>
+        </figure>
+      </div>
+
+      <h3 class="research-references-title">Publications</h3>
+      <ul class="research-papers" role="list">
+        <li>Xuelian Zhong (2026). Atmospheric Nitrous Acid in Contrasting Environments in North China. <cite>Environmental Science &amp; Technology</cite>, 60(14), 10961–10969.</li>
+        <li>Jiangshan Mu (2026). Explainable Machine Learning for High-Resolution Modeling of Long-Term Atmospheric Nitrogen and Sulfur Wet Deposition across the United States. <cite>Environmental Science &amp; Technology</cite>, 60(11), 8661–8670.</li>
+        <li>Haoxin Sui (2026). Isotope-Based Tracing of Atmospheric Reactive Nitrogen: Progress and Prospects. <cite>ACS ES&amp;T Air</cite>, 3(2), 245–261.</li>
       </ul>
     </section>
 
     <section class="content-section research-highlight" id="marine-atmospheric-chemistry" aria-labelledby="marine-atmospheric-chemistry-title">
       <h2 id="marine-atmospheric-chemistry-title">Marine Atmospheric Chemistry</h2>
-      <p>Chlorine isotope measurements in nitryl chloride distinguished sea-salt chlorine from chlorine released by combustion. Field observations showed that chlorine from the ocean can continue to participate in atmospheric reactions as air moves inland.</p>
-      <p>Laboratory experiments identified two ways aerosol chemistry affects reactive nitrogen. Organic peroxides react with nitrite to form particulate organic nitrates, a pathway evaluated with observations from Cape Verde and Beijing. Iodide also draws nitrate to the surface of marine aerosol particles, where sunlight can break it down and release more HONO. Model simulations suggest that this mechanism can increase hydroxyl radical and ozone levels in marine air.</p>
-      <p>Field measurements in Qingdao and chamber experiments showed that sunlight breaks down green macroalgae and releases formaldehyde, which contributes to radical and ozone production in coastal air.</p>
+      <p>Sea salt, aerosol reactions, and biological activity supply reactive chemicals to the marine atmosphere. Field measurements and experiments, together with molecular and atmospheric models, show how these sources affect coastal ozone formation, nitrogen cycling, and the oxidation of trace gases.</p>
 
-      <h3>Publications</h3>
-      <ul class="research-papers">
-        <li>Zheng Zong (2026). <a href="https://doi.org/10.1126/sciadv.aeb5397">Isotopic constraints on the origin of reactive chlorine in the troposphere</a>. <cite>Science Advances</cite>.</li>
-        <li>Yu Yang (2025). <a href="https://doi.org/10.1038/s41467-025-60696-3">Multiphase reactions of organic peroxides and nitrite as a source of atmospheric organic nitrates</a>. <cite>Nature Communications</cite>.</li>
-        <li>Hengqing Shen (2025). <a href="https://doi.org/10.1038/s41467-025-63420-3">Aerosol iodide accelerates reactive nitrogen cycling in the marine atmosphere</a>. <cite>Nature Communications</cite>.</li>
-        <li>Hengqing Shen (2025). <a href="https://doi.org/10.1016/j.scib.2024.09.024">Marine sources of formaldehyde in the coastal atmosphere</a>. <cite>Science Bulletin</cite>.</li>
+      <div class="research-study">
+        <div>
+          <h3>Tracing Oceanic and Combustion Sources of Chlorine</h3>
+          <p>Reactive chlorine can accelerate the oxidation of hydrocarbons and influence ozone chemistry. Chemical ionization mass spectrometry was used to measure chlorine isotope ratios in nitryl chloride (ClNO<sub>2</sub>), a compound that releases chlorine atoms in sunlight. Estimated chlorine isotope signatures in nitryl chloride were about −9 ± 4‰ for the marine source and +20 ± 7‰ for the anthropogenic combustion source.</p>
+          <p>These distinct signatures helped quantify the two sources in field samples. Chloride emitted in sea spray could continue to cycle through gases and particles in polluted air as it traveled inland. The findings show why the marine contribution to reactive chlorine needs to be considered beyond the immediate coastline.</p>
+        </div>
+        <figure class="research-study-figure">
+          <img src="../assets/research/highlights/reactive-chlorine-isotopes.jpg" width="868" height="579" alt="Diagram and isotope range plot distinguish chlorine emitted over land from sea-salt chlorine and illustrate subsequent atmospheric reactions." loading="lazy">
+          <figcaption>Using chlorine isotope signatures to distinguish marine and combustion sources of reactive chlorine.</figcaption>
+        </figure>
+      </div>
+
+      <div class="research-study">
+        <div>
+          <h3>A Multiphase Route to Particulate Organic Nitrates</h3>
+          <p>Organic nitrates help link nitrogen oxide chemistry to secondary organic aerosol. Laboratory measurements established that organic peroxides can react with nitrite in the particle phase to produce organic nitrates. The experiments investigated how acidity and peroxide structure affect reaction rates and product yields.</p>
+          <p>The proposed mechanism begins with a short-lived alkyl peroxynitrite. When it breaks down, the two radicals can recombine within the surrounding liquid to form an organic nitrate. Applying the experimental results to observations from Cape Verde and Beijing indicated that this pathway can contribute to organic nitrate formation in both remote marine and polluted urban aerosols.</p>
+        </div>
+        <figure class="research-study-figure">
+          <img src="../assets/research/highlights/organic-nitrate-pathway.jpg" width="739" height="606" alt="Daytime and nighttime diagram contrasts gas-phase organic nitrate reactions with formation from organic peroxides and nitrite in particles." loading="lazy">
+          <figcaption>Particle-phase organic nitrate formation alongside established gas-phase pathways.</figcaption>
+        </figure>
+      </div>
+
+      <div class="research-study">
+        <div>
+          <h3>Iodide and Reactive Nitrogen Recycling</h3>
+          <p>Daytime HONO peaks are frequently observed in marine air. Laboratory experiments and molecular simulations showed that iodide tends to accumulate at the air–water interface of an aerosol particle, bringing more nitrate to the surface. Under conditions representative of marine aerosols, the presence of iodide increased HONO production from sunlight-driven nitrate breakdown by more than a factor of ten in the experiments.</p>
+          <p>In a global chemistry model, including this pathway accelerated the recycling of reactive nitrogen in the marine boundary layer. The simulations indicated higher hydroxyl radical and ozone concentrations over parts of the ocean, with potential effects on the atmospheric removal of methane and dimethyl sulfide.</p>
+        </div>
+        <figure class="research-study-figure">
+          <img src="../assets/research/highlights/iodide-nitrogen-cycling.jpg" width="849" height="469" alt="Cross section of a marine aerosol particle shows iodide-associated nitrate photolysis and the release of nitrous acid into the surrounding air." loading="lazy">
+          <figcaption>Iodide enhances nitrate photolysis at the aerosol surface and promotes HONO release.</figcaption>
+        </figure>
+      </div>
+
+      <div class="research-study">
+        <div>
+          <h3>Formaldehyde from Coastal Macroalgae</h3>
+          <p>Summer measurements close to the Qingdao shoreline found that formaldehyde remained elevated even when air arrived from over the sea. Concentrations averaged 2.4 ± 0.9 parts per billion by volume and reached 6.8 parts per billion. Formaldehyde tracked compounds associated with marine air more closely than primary pollutants such as carbon monoxide.</p>
+          <p>Chamber experiments confirmed that sunlight-driven decomposition of green macroalgae released formaldehyde and other volatile compounds. A model constrained by the coastal measurements attributed 56% of primary hydroperoxy radical (HO<sub>2</sub>) production to formaldehyde chemistry. Leaving out that chemistry reduced the modeled ozone production rate by 15%. The results connect coastal algal activity to the local budgets of atmospheric radicals and ozone.</p>
+        </div>
+        <figure class="research-study-figure">
+          <img src="../assets/research/highlights/marine-formaldehyde.png" width="646" height="431" alt="Coastal photograph annotated with pathways linking algal decomposition and marine organic compounds to formaldehyde, radicals, and ozone." loading="lazy">
+          <figcaption>Coastal sources of formaldehyde and its role in radical and ozone chemistry.</figcaption>
+        </figure>
+      </div>
+
+      <h3 class="research-references-title">Publications</h3>
+      <ul class="research-papers" role="list">
+        <li>Zheng Zong (2026). Isotopic constraints on the origin of reactive chlorine in the troposphere. <cite>Science Advances</cite>, 12(3), eaeb5397.</li>
+        <li>Yu Yang (2025). Multiphase reactions of organic peroxides and nitrite as a source of atmospheric organic nitrates. <cite>Nature Communications</cite>, 16, 5437.</li>
+        <li>Hengqing Shen (2025). Aerosol iodide accelerates reactive nitrogen cycling in the marine atmosphere. <cite>Nature Communications</cite>, 16, 8148.</li>
+        <li>Hengqing Shen (2025). Marine sources of formaldehyde in the coastal atmosphere. <cite>Science Bulletin</cite>, 70(1), 96–103.</li>
       </ul>
     </section>
   </main>

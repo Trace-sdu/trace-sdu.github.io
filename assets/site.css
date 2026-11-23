@@ -79,7 +79,8 @@ a:focus-visible { outline: 2px solid var(--link); outline-offset: 4px; }
 }
 
 .brand-name-line { display: block; }
-.brand-initial { color: #9a171f; }
+.brand-word { display: inline-block; }
+.brand-word::first-letter { color: #9a171f; }
 
 .site-nav {
   display: flex;

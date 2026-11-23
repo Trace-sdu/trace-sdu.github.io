@@ -1,5 +1,7 @@
 :root {
   color-scheme: light;
+  --background: #fff;
+  background-color: var(--background);
   --ink: #222b36;
   --muted: #4b5563;
   --link: #145c97;
@@ -15,7 +17,7 @@ body {
   min-height: 100vh;
   min-height: 100svh;
   margin: 0;
-  background: #fff;
+  background-color: var(--background);
   color: var(--ink);
   font: 1rem/1.7 system-ui, sans-serif;
 }
@@ -32,7 +34,7 @@ a:focus-visible { outline: 2px solid var(--link); outline-offset: 4px; }
   top: .5rem;
   left: .5rem;
   padding: .5rem .75rem;
-  background: #fff;
+  background-color: var(--background);
   transform: translateY(-200%);
 }
 .skip-link:focus { transform: none; }

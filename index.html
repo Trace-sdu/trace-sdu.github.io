@@ -1,18 +1,21 @@
 <!doctype html>
-<html lang="en">
+<html lang="zh-CN">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="TRACE, the Team for Research on Atmospheric Chemistry &amp; Environment. Explore our research, publications, and team.">
+  <meta name="description" content="TRACE 课题组的三个研究方向：高活性气体的大气过程与环境效应、海洋－大气化学相互作用、臭氧污染成因与防控。">
   <title>TRACE | Team for Research on Atmospheric Chemistry &amp; Environment</title>
-  <link rel="stylesheet" href="./assets/site.css?v=3">
+  <link rel="stylesheet" href="./assets/site.css?v=4">
 </head>
 <body>
-  <a class="skip-link" href="#main">Skip to content</a>
+  <a class="skip-link" href="#main">跳到研究内容</a>
   <header class="site-header">
     <div class="wrap header-inner">
-      <a class="brand" href="./"><img src="./assets/LOGO.png" alt="TRACE" width="1226" height="997"></a>
-      <nav aria-label="Main navigation">
+      <a class="brand" href="./" lang="en">
+        <img src="./assets/LOGO.png" alt="TRACE" width="1226" height="997">
+        <span class="brand-name">Team for Research on Atmospheric Chemistry &amp; Environment</span>
+      </a>
+      <nav aria-label="Main navigation" lang="en">
         <a href="./" aria-current="page">Home</a>
         <a href="./research/">Research</a>
         <a href="./publication/">Publication</a>
@@ -22,26 +25,57 @@
   </header>
 
   <main id="main" class="wrap home-layout">
-    <div class="home-main">
-      <h1>Team for Research on Atmospheric Chemistry &amp; Environment</h1>
-      <p>Explore our research and meet the <a href="./people/">people</a> behind the work.</p>
+    <h1 class="visually-hidden">TRACE 研究方向</h1>
+    <nav class="topic-nav" aria-labelledby="topic-nav-title">
+      <p id="topic-nav-title">本页目录</p>
+      <ul>
+        <li><a href="#reactive-gases" aria-current="location">高活性气体的大气过程与环境效应</a></li>
+        <li><a href="#ocean-atmosphere">海洋－大气化学相互作用</a></li>
+        <li><a href="#ozone">臭氧污染成因与防控</a></li>
+      </ul>
+    </nav>
 
-      <section class="content-section" aria-labelledby="focus-title">
-        <h2 id="focus-title">Research focus</h2>
-        <p>Research areas and project descriptions will be added here.</p>
-        <p><a href="./research/">View research</a></p>
+    <div class="research-topics">
+      <section id="reactive-gases" class="research-topic" aria-labelledby="reactive-gases-title">
+        <h2 id="reactive-gases-title">高活性气体的大气过程与环境效应</h2>
+        <p>关注高活性气体在大气中的来源、化学转化与去除过程，研究这些过程如何改变大气氧化能力，并影响臭氧和二次颗粒物的形成。</p>
+        <p>重点关注不同排放条件和气象背景下，高活性气体的化学反应路径如何变化，以及这些变化对区域空气质量有何影响。</p>
+      </section>
+
+      <section id="ocean-atmosphere" class="research-topic" aria-labelledby="ocean-atmosphere-title">
+        <h2 id="ocean-atmosphere-title">海洋－大气化学相互作用</h2>
+        <p>关注痕量气体和颗粒物在海洋与大气之间的交换，研究海洋排放如何影响海洋边界层的大气化学，以及大气沉降如何改变海洋表层的化学环境。</p>
+        <p>重点比较开阔海洋和近岸环境的海气交换，探讨海洋排放与陆源污染随气团输送相遇时，如何共同影响沿海大气成分。</p>
+      </section>
+
+      <section id="ozone" class="research-topic" aria-labelledby="ozone-title">
+        <h2 id="ozone-title">臭氧污染成因与防控</h2>
+        <p>研究近地面臭氧污染的形成机制，区分前体物排放、光化学反应、气象条件和区域输送在污染过程中的作用。</p>
+        <p>重点关注臭氧对氮氧化物和挥发性有机物减排的响应，比较不同地区和季节的控制需求，为制定有针对性的防控策略提供依据。</p>
       </section>
     </div>
-
-    <aside class="publication-summary" aria-labelledby="recent-title">
-      <h2 id="recent-title">Recent publications</h2>
-      <p>New publications will be listed here.</p>
-      <p><a href="./publication/">View publications</a></p>
-    </aside>
   </main>
 
   <footer class="site-footer">
     <div class="wrap footer-inner"><span>TRACE</span><a href="https://github.com/Trace-sdu/trace-sdu.github.io">GitHub</a></div>
   </footer>
+
+  <script>
+    const topicLinks = [...document.querySelectorAll('.topic-nav a')];
+
+    function selectTopic() {
+      const current = topicLinks.find(link => link.hash === location.hash) ?? topicLinks[0];
+      for (const link of topicLinks) {
+        if (link === current) {
+          link.setAttribute('aria-current', 'location');
+        } else {
+          link.removeAttribute('aria-current');
+        }
+      }
+    }
+
+    window.addEventListener('hashchange', selectTopic);
+    selectTopic();
+  </script>
 </body>
 </html>

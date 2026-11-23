@@ -262,6 +262,7 @@ p { max-width: 68ch; margin: .8rem 0 0; }
   align-items: start;
   gap: 1.5rem;
 }
+.pi-profile-intro { grid-template-columns: minmax(0, 1fr) clamp(8rem, 16vw, 12rem); }
 .profile-portrait { display: block; width: 100%; height: auto; }
 .profile-role { margin-top: .6rem; font-weight: 650; }
 .profile-affiliation { margin-top: .15rem; color: var(--muted); }
@@ -384,6 +385,7 @@ p { max-width: 68ch; margin: .8rem 0 0; }
 @media (max-width: 32rem) {
   .profile-intro { grid-template-columns: minmax(0, 1fr); }
   .profile-portrait { width: 8rem; }
+  .pi-profile-intro .profile-portrait { width: 10rem; }
   .faculty-profile { grid-template-columns: minmax(0, 1fr); gap: 1rem; }
   .faculty-portrait { width: 9rem; }
   .alumni-table th, .alumni-table td { padding: .55rem .35rem; font-size: .875rem; }

@@ -219,6 +219,8 @@ p { max-width: 68ch; margin: .8rem 0 0; }
   border-top: 1px solid var(--rule);
   scroll-margin-top: 1.5rem;
 }
+#biography > p { max-width: none; }
+
 .profile-records { margin: .9rem 0 0; }
 .profile-records > div {
   display: grid;

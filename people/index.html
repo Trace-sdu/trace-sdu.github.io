@@ -3,9 +3,10 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Team members and collaborators at TRACE.">
+  <meta name="description" content="Meet the TRACE lab director, faculty, students, and former members.">
   <title>People | TRACE</title>
-  <link rel="stylesheet" href="../assets/site.css?v=10">
+  <link rel="stylesheet" href="../assets/site.css?v=11">
+  <script src="../assets/people.js" defer></script>
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
@@ -29,13 +30,29 @@
   </header>
 
   <main id="main" class="wrap">
-    <header class="page-intro">
-      <h1>People</h1>
-      <p>Team members and collaborators.</p>
-    </header>
-    <section class="content-section" aria-labelledby="profiles-title">
-      <h2 id="profiles-title">Profiles</h2>
-      <p>Names, roles, and biographies will be added here.</p>
+    <h1>People</h1>
+    <div class="people-tabs" role="tablist" aria-label="People categories">
+      <button type="button" role="tab" id="tab-lab-director" aria-controls="lab-director" aria-selected="true">Lab Director</button>
+      <button type="button" role="tab" id="tab-faculty" aria-controls="faculty" aria-selected="false" tabindex="-1">Faculty</button>
+      <button type="button" role="tab" id="tab-students" aria-controls="students" aria-selected="false" tabindex="-1">Students</button>
+      <button type="button" role="tab" id="tab-former-members" aria-controls="former-members" aria-selected="false" tabindex="-1">Former Members</button>
+    </div>
+
+    <section class="people-panel" role="tabpanel" id="lab-director" aria-labelledby="tab-lab-director" tabindex="0">
+      <h2>Lab Director</h2>
+      <p>The lab director’s profile will be added here.</p>
+    </section>
+    <section class="people-panel" role="tabpanel" id="faculty" aria-labelledby="tab-faculty" tabindex="0" hidden>
+      <h2>Faculty</h2>
+      <p>Faculty profiles will be added here.</p>
+    </section>
+    <section class="people-panel" role="tabpanel" id="students" aria-labelledby="tab-students" tabindex="0" hidden>
+      <h2>Students</h2>
+      <p>Student profiles will be added here.</p>
+    </section>
+    <section class="people-panel" role="tabpanel" id="former-members" aria-labelledby="tab-former-members" tabindex="0" hidden>
+      <h2>Former Members</h2>
+      <p>Former member profiles will be added here.</p>
     </section>
   </main>
 

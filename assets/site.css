@@ -247,6 +247,7 @@ p { max-width: 68ch; margin: .8rem 0 0; }
 .faculty-profile:last-child { padding-bottom: 0; }
 .faculty-portrait { display: block; width: 100%; height: auto; }
 .faculty-profile h2 { font-size: 1.5rem; }
+.faculty-profile p { max-width: none; }
 .faculty-position { margin-top: .6rem; font-weight: 650; }
 .faculty-email { margin-top: .15rem; }
 .faculty-email a { margin-inline-start: .35rem; }

@@ -203,6 +203,13 @@ p { max-width: 68ch; margin: .8rem 0 0; }
 
 .content-section p { color: var(--muted); }
 
+.research-overview { margin-top: 1.65rem; }
+.research-overview section + section { margin-top: 1.6rem; }
+.research-overview h2 { text-decoration: underline; text-underline-offset: .15em; }
+.research-overview p { max-width: none; }
+.research-overview ol { margin: .8rem 0 0; padding-inline-start: 1.4rem; }
+.research-overview li + li { margin-top: .2rem; }
+
 .research-highlight { max-width: none; }
 .research-highlight h2 { color: #88254f; font-size: clamp(1.35rem, 2.5vw, 1.65rem); }
 

@@ -15,24 +15,26 @@
     nanjing: { name: 'Nanjing', coordinates: [32.06, 118.80], inChina: true },
     ningbo: { name: 'Ningbo', coordinates: [29.87, 121.55], inChina: true },
     qingdao: { name: 'Qingdao', coordinates: [36.07, 120.38], inChina: true },
-    shanghai: { name: 'Shanghai', coordinates: [31.23, 121.47], inChina: true },
   };
+  // The first eligible role is the highest one shown on the map.
   const roleLabels = {
-    masters: 'Master’s Student',
-    phd: 'Ph.D. Student',
     postdoc: 'Postdoctoral Fellow',
-    assistant: 'Research Assistant',
+    phd: 'Ph.D. Student',
+    masters: 'Master’s Student',
   };
+  const rolePriority = Object.keys(roleLabels);
   const alumniByCity = new Map();
   for (const row of document.querySelectorAll('.alumni-table tr[data-alumni-city][data-alumni-role]')) {
     const { alumniCity, alumniRole } = row.dataset;
-    if (!row.id || !Object.hasOwn(cities, alumniCity) || !Object.hasOwn(roleLabels, alumniRole)) continue;
+    const formerRoles = alumniRole.split(/\s+/);
+    const role = rolePriority.find(candidate => formerRoles.includes(candidate));
+    if (!row.id || !Object.hasOwn(cities, alumniCity) || !role) continue;
 
     const alumni = alumniByCity.get(alumniCity) ?? [];
     alumni.push({
       id: row.id,
       name: row.cells[0].textContent.trim(),
-      role: alumniRole,
+      role,
       position: [...row.cells[2].childNodes].map(node => node.textContent.trim()).filter(Boolean).join(' · '),
     });
     alumniByCity.set(alumniCity, alumni);

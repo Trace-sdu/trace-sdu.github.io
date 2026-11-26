@@ -10,13 +10,13 @@
   <link rel="stylesheet" href="../../assets/vendor/leaflet/leaflet.css">
   <link rel="stylesheet" href="../../assets/vendor/leaflet-markercluster/MarkerCluster.css">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/maplibre-gl@5.24.0/dist/maplibre-gl.css" integrity="sha384-uTttxo/aOKbdE5RlD/SPzSDoDmNvGlUYPjONi2MN/b7c9HPSvW07OIuyP7uL6jxK" crossorigin="anonymous">
-  <link rel="stylesheet" href="../../assets/alumni-map.css?v=2">
+  <link rel="stylesheet" href="../../assets/alumni-map.css?v=3">
   <script src="../../assets/navigation.js" defer></script>
   <script src="../../assets/vendor/leaflet/leaflet.js" defer></script>
   <script src="../../assets/vendor/leaflet-markercluster/leaflet.markercluster.js" defer></script>
   <script src="https://cdn.jsdelivr.net/npm/maplibre-gl@5.24.0/dist/maplibre-gl.js" integrity="sha384-5+cfbwT0iiub6VsQAdn6yz16nr6sDiQoHx6tm4O8OVYXHYOxcffFmCJBL0dgdvGp" crossorigin="anonymous" defer></script>
   <script src="https://cdn.jsdelivr.net/npm/@maplibre/maplibre-gl-leaflet@0.1.4/leaflet-maplibre-gl.js" integrity="sha384-tXYNKOHx4T02jMP7YYCtBxPIv1B5gaA5mcVPBzqMp6d7VzWzxJgI2aWF/nJLrQdS" crossorigin="anonymous" defer></script>
-  <script src="../../assets/alumni-map.js?v=3" defer></script>
+  <script src="../../assets/alumni-map.js?v=4" defer></script>
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
@@ -64,11 +64,9 @@
       <div class="alumni-map-key">
         <span>Former role at TRACE</span>
         <ul class="alumni-map-legend">
-          <li><span class="alumni-map-dot" data-role="masters" aria-hidden="true"></span>Master’s Student</li>
-          <li><span class="alumni-map-dot" data-role="phd" aria-hidden="true"></span>Ph.D. Student</li>
-          <li><span class="alumni-map-dot" data-role="postdoc" aria-hidden="true"></span>Postdoctoral Fellow</li>
-          <li><span class="alumni-map-dot" data-role="assistant" aria-hidden="true"></span>Research Assistant</li>
-          <li><span class="alumni-map-dot" aria-hidden="true"></span>Multiple roles</li>
+          <li><span class="alumni-map-dot" data-role="masters" aria-hidden="true"></span>Master’s</li>
+          <li><span class="alumni-map-dot" data-role="phd" aria-hidden="true"></span>Ph.D.</li>
+          <li><span class="alumni-map-dot" data-role="postdoc" aria-hidden="true"></span>Postdoc</li>
         </ul>
       </div>
     </section>
@@ -97,7 +95,7 @@
           <td><span class="alumni-term">2014–2022</span> · Ph.D. Student</td>
           <td>Postdoctoral Researcher<br>Peking University</td>
         </tr>
-        <tr id="han-zizhen" data-alumni-city="beijing" data-alumni-role="assistant" tabindex="-1">
+        <tr id="han-zizhen" tabindex="-1">
           <th scope="row">Han, Zizhen</th>
           <td><span class="alumni-term">2023–2025</span> · Research Assistant</td>
           <td>Ph.D. Student<br>Beijing University of Technology</td>
@@ -117,7 +115,7 @@
           <td><span class="alumni-term">2015–2018</span> · Master’s Student</td>
           <td><span aria-hidden="true">—</span><span class="visually-hidden">Current position not listed</span></td>
         </tr>
-        <tr id="li-hongyong" data-alumni-city="jinan" data-alumni-role="phd" tabindex="-1">
+        <tr id="li-hongyong" data-alumni-city="jinan" data-alumni-role="masters phd" tabindex="-1">
           <th scope="row">Li, Hongyong</th>
           <td><span class="alumni-term">2017–2020</span> · Master’s Student<br>
               <span class="alumni-term">2020–2025</span> · Ph.D. Student</td>
@@ -138,12 +136,12 @@
           <td><span class="alumni-term">2018–2021</span> · Master’s Student</td>
           <td>Ph.D. Student<br>Ocean University of China</td>
         </tr>
-        <tr id="liu-zhou" data-alumni-city="shanghai" data-alumni-role="assistant" tabindex="-1">
+        <tr id="liu-zhou" tabindex="-1">
           <th scope="row">Liu, Zhou</th>
           <td><span class="alumni-term">2023–2024</span> · Research Assistant</td>
           <td>Ph.D. Student<br>Fudan University</td>
         </tr>
-        <tr id="mu-jiangshan" data-alumni-city="durham" data-alumni-role="phd" tabindex="-1">
+        <tr id="mu-jiangshan" data-alumni-city="durham" data-alumni-role="masters phd" tabindex="-1">
           <th scope="row"><a href="https://jiangshanmu.github.io/mujsh.github.io/">Mu, Jiangshan</a></th>
           <td><span class="alumni-term">2018–2021</span> · Master’s Student<br>
               <span class="alumni-term">2021–2025</span> · Ph.D. Student</td>
@@ -235,7 +233,7 @@
           <td><span class="alumni-term">2019–2022</span> · Master’s Student</td>
           <td><span aria-hidden="true">—</span><span class="visually-hidden">Current position not listed</span></td>
         </tr>
-        <tr id="zhao-min" data-alumni-city="qingdao" data-alumni-role="phd" tabindex="-1">
+        <tr id="zhao-min" data-alumni-city="qingdao" data-alumni-role="masters phd" tabindex="-1">
           <th scope="row">Zhao, Min</th>
           <td><span class="alumni-term">2019–2022</span> · Master’s Student<br>
               <span class="alumni-term">2022–2026</span> · Ph.D. Student</td>

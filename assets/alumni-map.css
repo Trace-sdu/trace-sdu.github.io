@@ -1,0 +1,111 @@
+.alumni-map-section {
+  --map-accent: #50164a;
+  margin-block: 1.5rem 2rem;
+}
+
+.alumni-map-header {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: .5rem 1rem;
+}
+
+.alumni-map-header h2 { margin: 0; }
+
+#alumni-map-reset {
+  border: 1px solid var(--map-accent);
+  border-radius: .25rem;
+  padding: .35rem .75rem;
+  background: var(--background);
+  color: var(--map-accent);
+  font: 600 .875rem/1.5 system-ui, sans-serif;
+  cursor: pointer;
+}
+
+#alumni-map-reset:hover { background: #f7f2f7; }
+#alumni-map-reset:focus-visible { outline: 2px solid var(--map-accent); outline-offset: 3px; }
+#alumni-map-description { margin-block: .45rem .9rem; }
+
+#alumni-map {
+  height: clamp(22rem, 55vh, 33rem);
+  border: 1px solid var(--rule);
+  isolation: isolate;
+  background: #edf2f5;
+  font-family: system-ui, sans-serif;
+}
+
+.alumni-map-key {
+  display: flex;
+  flex-wrap: wrap;
+  gap: .25rem 1rem;
+  align-items: baseline;
+  margin-top: .55rem;
+  color: var(--muted);
+  font-size: .875rem;
+}
+
+.alumni-map-key > span { font-weight: 650; color: var(--ink); }
+
+.alumni-map-legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: .25rem 1rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.alumni-map-legend li { display: flex; align-items: center; gap: .35rem; }
+
+.alumni-map-dot {
+  display: inline-block;
+  width: .7rem;
+  height: .7rem;
+  flex: 0 0 .7rem;
+  border-radius: 50%;
+  background: var(--marker-color, var(--map-accent));
+}
+
+.alumni-map-section [data-role="masters"] { --marker-color: #14776c; }
+.alumni-map-section [data-role="phd"] { --marker-color: #145c97; }
+.alumni-map-section [data-role="postdoc"] { --marker-color: #a33841; }
+.alumni-map-section [data-role="assistant"] { --marker-color: #946117; }
+
+#alumni-map .alumni-map-marker,
+#alumni-map .alumni-map-cluster {
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  box-shadow: 0 1px 4px #23304466;
+  font-size: .8125rem;
+  font-weight: 700;
+}
+
+#alumni-map .alumni-map-marker {
+  border: 2px solid #fff;
+  background: var(--marker-color, var(--map-accent));
+  color: #fff;
+}
+
+#alumni-map .alumni-map-cluster {
+  border: 2px solid var(--map-accent);
+  background: #fff;
+  color: var(--map-accent);
+}
+
+#alumni-map [role="button"]:focus-visible { outline: 2px solid var(--map-accent); outline-offset: 3px; }
+
+.alumni-map-popup h3 { margin: 0 1rem .45rem 0; font-size: .95rem; }
+.alumni-map-popup ul { margin: 0; padding: 0; list-style: none; }
+.alumni-map-popup li + li { margin-top: .5rem; }
+.alumni-map-popup a { font-weight: 650; }
+.alumni-map-popup .alumni-map-dot { margin-inline-end: .35rem; vertical-align: baseline; }
+.alumni-map-position { display: block; padding-inline-start: 1.05rem; color: var(--muted); }
+
+.alumni-table tr[data-alumni-city] { scroll-margin-top: 1.25rem; }
+.alumni-table tr[data-alumni-city]:target > * { background: #f7f2f7; }
+
+@media (max-width: 42rem) {
+  #alumni-map { height: 22rem; }
+}

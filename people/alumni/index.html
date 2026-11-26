@@ -7,7 +7,13 @@
   <title>Alumni | TRACE</title>
   <link rel="icon" type="image/png" sizes="48x48" href="../../favicon.png">
   <link rel="stylesheet" href="../../assets/site.css?v=alumni-directory">
+  <link rel="stylesheet" href="../../assets/vendor/leaflet/leaflet.css">
+  <link rel="stylesheet" href="../../assets/vendor/leaflet-markercluster/MarkerCluster.css">
+  <link rel="stylesheet" href="../../assets/alumni-map.css?v=1">
   <script src="../../assets/navigation.js" defer></script>
+  <script src="../../assets/vendor/leaflet/leaflet.js" defer></script>
+  <script src="../../assets/vendor/leaflet-markercluster/leaflet.markercluster.js" defer></script>
+  <script src="../../assets/alumni-map.js?v=1" defer></script>
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
@@ -36,6 +42,25 @@
   <main id="main" class="wrap">
     <h1 id="alumni-title">Alumni</h1>
 
+    <section class="alumni-map-section" aria-labelledby="alumni-map-title" hidden>
+      <div class="alumni-map-header">
+        <h2 id="alumni-map-title">Alumni Map</h2>
+        <button type="button" id="alumni-map-reset">View all locations</button>
+      </div>
+      <p id="alumni-map-description">Select a city marker to see TRACE alumni who work or study there.</p>
+      <div id="alumni-map" role="region" aria-label="Alumni locations" aria-describedby="alumni-map-description"></div>
+      <div class="alumni-map-key">
+        <span>Former role at TRACE</span>
+        <ul class="alumni-map-legend">
+          <li><span class="alumni-map-dot" data-role="masters" aria-hidden="true"></span>Master’s Student</li>
+          <li><span class="alumni-map-dot" data-role="phd" aria-hidden="true"></span>Ph.D. Student</li>
+          <li><span class="alumni-map-dot" data-role="postdoc" aria-hidden="true"></span>Postdoctoral Fellow</li>
+          <li><span class="alumni-map-dot" data-role="assistant" aria-hidden="true"></span>Research Assistant</li>
+          <li><span class="alumni-map-dot" aria-hidden="true"></span>Multiple roles</li>
+        </ul>
+      </div>
+    </section>
+
     <table class="alumni-table" aria-labelledby="alumni-title">
       <thead>
         <tr>
@@ -45,7 +70,7 @@
         </tr>
       </thead>
       <tbody>
-        <tr>
+        <tr id="chen-tianshu" data-alumni-city="qingdao" data-alumni-role="phd" tabindex="-1">
           <th scope="row"><a href="https://coas.ouc.edu.cn/2025/1218/c8874a513439/page.htm">Chen, Tianshu</a></th>
           <td><span class="alumni-term">2015–2022</span> · Ph.D. Student</td>
           <td>Associate Professor<br>Ocean University of China</td>
@@ -55,12 +80,12 @@
           <td>Postdoctoral Fellow</td>
           <td></td>
         </tr>
-        <tr>
+        <tr id="gu-rongrong" data-alumni-city="beijing" data-alumni-role="phd" tabindex="-1">
           <th scope="row">Gu, Rongrong</th>
           <td><span class="alumni-term">2014–2022</span> · Ph.D. Student</td>
           <td>Postdoctoral Researcher<br>Peking University</td>
         </tr>
-        <tr>
+        <tr id="han-zizhen" data-alumni-city="beijing" data-alumni-role="assistant" tabindex="-1">
           <th scope="row">Han, Zizhen</th>
           <td><span class="alumni-term">2023–2025</span> · Research Assistant</td>
           <td>Ph.D. Student<br>Beijing University of Technology</td>
@@ -70,7 +95,7 @@
           <td><span class="alumni-term">2023–2026</span> · Master’s Student</td>
           <td><span aria-hidden="true">—</span><span class="visually-hidden">Current position not listed</span></td>
         </tr>
-        <tr>
+        <tr id="jiang-ying" data-alumni-city="jiujiang" data-alumni-role="phd" tabindex="-1">
           <th scope="row"><a href="https://zhxy.jju.edu.cn/info/1065/2914.htm">Jiang, Ying</a></th>
           <td><span class="alumni-term">2016–2022</span> · Ph.D. Student</td>
           <td>Associate Professor<br>Jiujiang University</td>
@@ -80,7 +105,7 @@
           <td><span class="alumni-term">2015–2018</span> · Master’s Student</td>
           <td><span aria-hidden="true">—</span><span class="visually-hidden">Current position not listed</span></td>
         </tr>
-        <tr>
+        <tr id="li-hongyong" data-alumni-city="jinan" data-alumni-role="phd" tabindex="-1">
           <th scope="row">Li, Hongyong</th>
           <td><span class="alumni-term">2017–2020</span> · Master’s Student<br>
               <span class="alumni-term">2020–2025</span> · Ph.D. Student</td>
@@ -96,23 +121,23 @@
           <td><span class="alumni-term">2015–2018</span> · Master’s Student</td>
           <td><span aria-hidden="true">—</span><span class="visually-hidden">Current position not listed</span></td>
         </tr>
-        <tr>
+        <tr id="liu-yuhong" data-alumni-city="qingdao" data-alumni-role="masters" tabindex="-1">
           <th scope="row">Liu, Yuhong</th>
           <td><span class="alumni-term">2018–2021</span> · Master’s Student</td>
           <td>Ph.D. Student<br>Ocean University of China</td>
         </tr>
-        <tr>
+        <tr id="liu-zhou" data-alumni-city="shanghai" data-alumni-role="assistant" tabindex="-1">
           <th scope="row">Liu, Zhou</th>
           <td><span class="alumni-term">2023–2024</span> · Research Assistant</td>
           <td>Ph.D. Student<br>Fudan University</td>
         </tr>
-        <tr>
+        <tr id="mu-jiangshan" data-alumni-city="durham" data-alumni-role="phd" tabindex="-1">
           <th scope="row"><a href="https://jiangshanmu.github.io/mujsh.github.io/">Mu, Jiangshan</a></th>
           <td><span class="alumni-term">2018–2021</span> · Master’s Student<br>
               <span class="alumni-term">2021–2025</span> · Ph.D. Student</td>
           <td>Postdoctoral Researcher<br>Duke University</td>
         </tr>
-        <tr>
+        <tr id="nie-yanqiu" data-alumni-city="nanjing" data-alumni-role="masters" tabindex="-1">
           <th scope="row">Nie, Yanqiu</th>
           <td><span class="alumni-term">2021–2024</span> · Master’s Student</td>
           <td>Ph.D. Student<br>Nanjing University</td>
@@ -122,7 +147,7 @@
           <td><span class="alumni-term">2017–2025</span> · Ph.D. Student</td>
           <td><span aria-hidden="true">—</span><span class="visually-hidden">Current position not listed</span></td>
         </tr>
-        <tr>
+        <tr id="shen-hengqing" data-alumni-city="qingdao" data-alumni-role="postdoc" tabindex="-1">
           <th scope="row"><a href="https://faculty.sdu.edu.cn/hengqing/en/index.htm">Shen, Hengqing</a></th>
           <td>Postdoctoral Fellow</td>
           <td>Research Professor<br>Shandong University</td>
@@ -132,7 +157,7 @@
           <td><span class="alumni-term">2015–2018</span> · Master’s Student</td>
           <td><span aria-hidden="true">—</span><span class="visually-hidden">Current position not listed</span></td>
         </tr>
-        <tr>
+        <tr id="sun-lei" data-alumni-city="jinan" data-alumni-role="phd" tabindex="-1">
           <th scope="row">Sun, Lei</th>
           <td><span class="alumni-term">2015–2019</span> · Ph.D. Student</td>
           <td>Associate Professor<br>Qilu University of Technology</td>
@@ -158,12 +183,12 @@
           <td><span class="alumni-term">2016–2018</span> · Master’s Student</td>
           <td>Ph.D. Student<br>State University of New York</td>
         </tr>
-        <tr>
+        <tr id="yang-juan" data-alumni-city="qingdao" data-alumni-role="masters" tabindex="-1">
           <th scope="row">Yang, Juan</th>
           <td><span class="alumni-term">2018–2021</span> · Master’s Student</td>
           <td>Postdoctoral Researcher<br>TRACE</td>
         </tr>
-        <tr>
+        <tr id="yang-xue" data-alumni-city="jinan" data-alumni-role="phd" tabindex="-1">
           <th scope="row"><a href="https://www.sdjzu.edu.cn/szhjgc/info/1393/6941.htm">Yang, Xue</a></th>
           <td><span class="alumni-term">2013–2018</span> · Ph.D. Student</td>
           <td>Associate Professor<br>Shandong Jianzhu University</td>
@@ -178,7 +203,7 @@
           <td><span class="alumni-term">2023–2026</span> · Master’s Student</td>
           <td><span aria-hidden="true">—</span><span class="visually-hidden">Current position not listed</span></td>
         </tr>
-        <tr>
+        <tr id="zhang-ji" data-alumni-city="nanjing" data-alumni-role="masters" tabindex="-1">
           <th scope="row">Zhang, Ji</th>
           <td><span class="alumni-term">2020–2023</span> · Master’s Student</td>
           <td>Ph.D. Student<br>Nanjing University</td>
@@ -188,7 +213,7 @@
           <td><span class="alumni-term">2022–2025</span> · Master’s Student</td>
           <td><span aria-hidden="true">—</span><span class="visually-hidden">Current position not listed</span></td>
         </tr>
-        <tr>
+        <tr id="zhang-yingnan" data-alumni-city="irvine" data-alumni-role="phd" tabindex="-1">
           <th scope="row">Zhang, Yingnan</th>
           <td><span class="alumni-term">2017–2022</span> · Ph.D. Student</td>
           <td>Postdoctoral Fellow<br>University of California, Irvine</td>
@@ -198,18 +223,18 @@
           <td><span class="alumni-term">2019–2022</span> · Master’s Student</td>
           <td><span aria-hidden="true">—</span><span class="visually-hidden">Current position not listed</span></td>
         </tr>
-        <tr>
+        <tr id="zhao-min" data-alumni-city="qingdao" data-alumni-role="phd" tabindex="-1">
           <th scope="row">Zhao, Min</th>
           <td><span class="alumni-term">2019–2022</span> · Master’s Student<br>
               <span class="alumni-term">2022–2026</span> · Ph.D. Student</td>
           <td>Research Assistant<br>TRACE</td>
         </tr>
-        <tr>
+        <tr id="zhao-na" data-alumni-city="qingdao" data-alumni-role="postdoc" tabindex="-1">
           <th scope="row"><a href="https://hjxy.qut.edu.cn/info/1076/7549.htm">Zhao, Na</a></th>
           <td><span class="alumni-term">2023–2025</span> · Postdoctoral Fellow</td>
           <td>Associate Professor<br>Qingdao University of Technology</td>
         </tr>
-        <tr>
+        <tr id="zheng-penggang" data-alumni-city="ningbo" data-alumni-role="masters" tabindex="-1">
           <th scope="row">Zheng, Penggang</th>
           <td><span class="alumni-term">2016–2018</span> · Master’s Student</td>
           <td>Postdoctoral Researcher<br>Eastern Institute of Technology, Ningbo</td>
@@ -219,7 +244,7 @@
           <td><span class="alumni-term">2015–2018</span> · Master’s Student</td>
           <td><span aria-hidden="true">—</span><span class="visually-hidden">Current position not listed</span></td>
         </tr>
-        <tr>
+        <tr id="zhu-yujiao" data-alumni-city="qingdao" data-alumni-role="postdoc" tabindex="-1">
           <th scope="row"><a href="https://faculty.sdu.edu.cn/zhuyujiao/en/index.htm">Zhu, Yujiao</a></th>
           <td>Postdoctoral Fellow</td>
           <td>Associate Professor<br>Shandong University</td>

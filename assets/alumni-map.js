@@ -92,7 +92,7 @@
   const webgl = leaflet.maplibreGL && document.createElement('canvas').getContext('webgl2');
   webgl?.getExtension('WEBGL_lose_context')?.loseContext();
 
-  function addBasemap(map) {
+  function addBasemap(map, getLabelVisibility) {
     function showOutline() {
       outlineRequest ??= fetch(new URL('alumni-land.json', baseUrl)).then(response => {
         if (!response.ok) throw new Error(`Land outline request failed (${response.status})`);
@@ -122,7 +122,25 @@
       layer.remove();
       showOutline();
     }, 10000);
-    layer.getMaplibreMap().once('load', () => clearTimeout(timer));
+    const glMap = layer.getMaplibreMap();
+    glMap.once('load', () => clearTimeout(timer));
+    if (getLabelVisibility) {
+      glMap.once('style.load', () => {
+        const labels = glMap.getStyle().layers.filter(styleLayer => styleLayer.type === 'symbol');
+        let currentVisibility;
+
+        function updateLabels() {
+          const visibility = getLabelVisibility();
+          if (visibility === currentVisibility) return;
+          for (const { id } of labels) glMap.setLayoutProperty(id, 'visibility', visibility);
+          currentVisibility = visibility;
+        }
+
+        updateLabels();
+        map.on('zoomend resize', updateLabels);
+        layer.once('remove', () => map.off('zoomend resize', updateLabels));
+      });
+    }
   }
 
   function createMap(element, chinaOnly = false) {
@@ -150,17 +168,24 @@
       if (!chinaOnly || city.inChina) markers.addLayer(createMarker(city, alumni));
     }
 
+    const chinaBounds = [[18, 73], [54, 135]];
+    const chinaPadding = leaflet.point(26, 18);
+    const getLabelVisibility = chinaOnly ? () => {
+      const overviewZoom = map.getBoundsZoom(chinaBounds, false, chinaPadding.multiplyBy(2));
+      return map.getZoom() > overviewZoom ? 'visible' : 'none';
+    } : undefined;
+
     function resetView() {
       map.closePopup();
       if (chinaOnly) {
-        map.fitBounds([[18, 73], [54, 135]], { padding: [26, 18], animate: false });
+        map.fitBounds(chinaBounds, { padding: chinaPadding, animate: false });
       } else {
         const zoom = map.getScaleZoom(map.getSize().x / map.options.crs.scale(0), 0);
         map.setView([10, 0], zoom, { animate: false });
       }
     }
     resetView();
-    addBasemap(map);
+    addBasemap(map, getLabelVisibility);
     markers.addTo(map);
     return resetView;
   }

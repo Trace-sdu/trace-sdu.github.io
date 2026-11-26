@@ -55,42 +55,42 @@ if (topicLinks.length > 0) {
   window.addEventListener('hashchange', selectHashTopic);
   selectHashTopic();
 
-  const years = topicLinks.filter(link => link.closest('.year-nav')).map(link => ({
+  const topics = topicLinks.map(link => ({
     link,
     section: document.getElementById(link.hash.slice(1)),
-  })).filter(year => year.section);
+  })).filter(topic => topic.section);
 
-  if (years.length > 1) {
+  if (topics.length > 1) {
     let updatePending = false;
 
-    function updateYear() {
+    function updateTopicFromScroll() {
       updatePending = false;
 
-      const firstYear = years[0];
+      const firstTopic = topics[0];
       const page = document.scrollingElement;
       // The last section can be too short to reach the top of the viewport.
-      if (page.scrollTop + page.clientHeight >= page.scrollHeight - 1) {
-        selectTopic(years.at(-1).link);
+      if (page.scrollTop > 0 && page.scrollTop + page.clientHeight >= page.scrollHeight - 1) {
+        selectTopic(topics.at(-1).link);
         return;
       }
 
-      const readingLine = parseFloat(getComputedStyle(firstYear.section).scrollMarginTop) + 1;
-      let currentYear = firstYear;
-      for (const year of years) {
-        if (year.section.getBoundingClientRect().top > readingLine) break;
-        currentYear = year;
+      const readingLine = parseFloat(getComputedStyle(firstTopic.section).scrollMarginTop) + 1;
+      let currentTopic = firstTopic;
+      for (const topic of topics) {
+        if (topic.section.getBoundingClientRect().top > readingLine) break;
+        currentTopic = topic;
       }
-      selectTopic(currentYear.link);
+      selectTopic(currentTopic.link);
     }
 
-    function scheduleYearUpdate() {
+    function scheduleTopicUpdate() {
       if (updatePending) return;
       updatePending = true;
-      requestAnimationFrame(updateYear);
+      requestAnimationFrame(updateTopicFromScroll);
     }
 
-    window.addEventListener('scroll', scheduleYearUpdate, { passive: true });
-    window.addEventListener('resize', scheduleYearUpdate);
-    window.addEventListener('pageshow', scheduleYearUpdate);
+    window.addEventListener('scroll', scheduleTopicUpdate, { passive: true });
+    window.addEventListener('resize', scheduleTopicUpdate);
+    window.addEventListener('pageshow', scheduleTopicUpdate);
   }
 }

@@ -154,6 +154,7 @@
       zoomSnap: chinaOnly ? .25 : 0,
       maxBounds: [[-85.05, -360], [85.05, 360]],
     });
+    map.attributionControl.setPrefix('<a href="https://leafletjs.com/">Leaflet</a>');
     const markers = leaflet.markerClusterGroup({
       animate: false,
       maxClusterRadius: chinaOnly ? 40 : 42,

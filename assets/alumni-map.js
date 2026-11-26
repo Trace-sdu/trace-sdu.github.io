@@ -15,12 +15,14 @@
     nanjing: { name: 'Nanjing', coordinates: [32.06, 118.80], inChina: true },
     ningbo: { name: 'Ningbo', coordinates: [29.87, 121.55], inChina: true },
     qingdao: { name: 'Qingdao', coordinates: [36.07, 120.38], inChina: true },
+    shanghai: { name: 'Shanghai', coordinates: [31.23, 121.47], inChina: true },
   };
   // The first eligible role is the highest one shown on the map.
   const roleLabels = {
     postdoc: 'Postdoctoral Fellow',
     phd: 'Ph.D. Student',
     masters: 'Master’s Student',
+    visiting: 'Visiting Member',
   };
   const rolePriority = Object.keys(roleLabels);
   const alumniByCity = new Map();

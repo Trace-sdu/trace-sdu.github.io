@@ -78,6 +78,7 @@
 .alumni-map-section [data-role="masters"] { --marker-color: #14776c; }
 .alumni-map-section [data-role="phd"] { --marker-color: #145c97; }
 .alumni-map-section [data-role="postdoc"] { --marker-color: #a33841; }
+.alumni-map-section [data-role="visiting"] { --marker-color: #946117; }
 
 .alumni-map .alumni-map-marker,
 .alumni-map .alumni-map-cluster {

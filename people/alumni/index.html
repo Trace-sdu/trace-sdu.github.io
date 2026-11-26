@@ -9,11 +9,14 @@
   <link rel="stylesheet" href="../../assets/site.css?v=alumni-directory">
   <link rel="stylesheet" href="../../assets/vendor/leaflet/leaflet.css">
   <link rel="stylesheet" href="../../assets/vendor/leaflet-markercluster/MarkerCluster.css">
-  <link rel="stylesheet" href="../../assets/alumni-map.css?v=1">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/maplibre-gl@5.24.0/dist/maplibre-gl.css" integrity="sha384-uTttxo/aOKbdE5RlD/SPzSDoDmNvGlUYPjONi2MN/b7c9HPSvW07OIuyP7uL6jxK" crossorigin="anonymous">
+  <link rel="stylesheet" href="../../assets/alumni-map.css?v=2">
   <script src="../../assets/navigation.js" defer></script>
   <script src="../../assets/vendor/leaflet/leaflet.js" defer></script>
   <script src="../../assets/vendor/leaflet-markercluster/leaflet.markercluster.js" defer></script>
-  <script src="../../assets/alumni-map.js?v=1" defer></script>
+  <script src="https://cdn.jsdelivr.net/npm/maplibre-gl@5.24.0/dist/maplibre-gl.js" integrity="sha384-5+cfbwT0iiub6VsQAdn6yz16nr6sDiQoHx6tm4O8OVYXHYOxcffFmCJBL0dgdvGp" crossorigin="anonymous" defer></script>
+  <script src="https://cdn.jsdelivr.net/npm/@maplibre/maplibre-gl-leaflet@0.1.4/leaflet-maplibre-gl.js" integrity="sha384-tXYNKOHx4T02jMP7YYCtBxPIv1B5gaA5mcVPBzqMp6d7VzWzxJgI2aWF/nJLrQdS" crossorigin="anonymous" defer></script>
+  <script src="../../assets/alumni-map.js?v=2" defer></script>
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
@@ -48,7 +51,16 @@
         <button type="button" id="alumni-map-reset">View all locations</button>
       </div>
       <p id="alumni-map-description">Select a city marker to see TRACE alumni who work or study there.</p>
-      <div id="alumni-map" role="region" aria-label="Alumni locations" aria-describedby="alumni-map-description"></div>
+      <div class="alumni-map-grid">
+        <section aria-labelledby="alumni-world-title">
+          <h3 id="alumni-world-title">World</h3>
+          <div id="alumni-map" class="alumni-map" role="region" aria-labelledby="alumni-world-title" aria-describedby="alumni-map-description"></div>
+        </section>
+        <section aria-labelledby="alumni-china-title">
+          <h3 id="alumni-china-title">China</h3>
+          <div id="alumni-china-map" class="alumni-map" role="region" aria-labelledby="alumni-china-title" aria-describedby="alumni-map-description"></div>
+        </section>
+      </div>
       <div class="alumni-map-key">
         <span>Former role at TRACE</span>
         <ul class="alumni-map-legend">

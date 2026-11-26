@@ -1,19 +1,21 @@
 (() => {
   const mapElement = document.getElementById('alumni-map');
+  const chinaMapElement = document.getElementById('alumni-china-map');
   const leaflet = window.L;
-  if (!mapElement || !leaflet?.markerClusterGroup) return;
+  if (!mapElement || !chinaMapElement || !leaflet?.markerClusterGroup) return;
+  const baseUrl = new URL('.', document.currentScript.src);
 
   // Locations represent cities of current affiliations, not campus or residential addresses.
   const cities = {
-    beijing: { name: 'Beijing', coordinates: [39.90, 116.41] },
+    beijing: { name: 'Beijing', coordinates: [39.90, 116.41], inChina: true },
     durham: { name: 'Durham, NC', coordinates: [36.00, -78.90] },
     irvine: { name: 'Irvine, CA', coordinates: [33.68, -117.83] },
-    jinan: { name: 'Jinan', coordinates: [36.67, 117.12] },
-    jiujiang: { name: 'Jiujiang', coordinates: [29.71, 115.99] },
-    nanjing: { name: 'Nanjing', coordinates: [32.06, 118.80] },
-    ningbo: { name: 'Ningbo', coordinates: [29.87, 121.55] },
-    qingdao: { name: 'Qingdao', coordinates: [36.07, 120.38] },
-    shanghai: { name: 'Shanghai', coordinates: [31.23, 121.47] },
+    jinan: { name: 'Jinan', coordinates: [36.67, 117.12], inChina: true },
+    jiujiang: { name: 'Jiujiang', coordinates: [29.71, 115.99], inChina: true },
+    nanjing: { name: 'Nanjing', coordinates: [32.06, 118.80], inChina: true },
+    ningbo: { name: 'Ningbo', coordinates: [29.87, 121.55], inChina: true },
+    qingdao: { name: 'Qingdao', coordinates: [36.07, 120.38], inChina: true },
+    shanghai: { name: 'Shanghai', coordinates: [31.23, 121.47], inChina: true },
   };
   const roleLabels = {
     masters: 'Master’s Student',
@@ -37,33 +39,7 @@
   }
   if (!alumniByCity.size) return;
 
-  mapElement.closest('.alumni-map-section').hidden = false;
-  const map = leaflet.map(mapElement, {
-    scrollWheelZoom: false,
-    fadeAnimation: false,
-    minZoom: .5,
-    zoomSnap: .5,
-    maxBounds: [[-85.05, -360], [85.05, 360]],
-  });
-  leaflet.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
-    attribution: '© <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
-    maxZoom: 14,
-  }).addTo(map);
-
-  const markers = leaflet.markerClusterGroup({
-    animate: false,
-    maxClusterRadius: 48,
-    showCoverageOnHover: false,
-    iconCreateFunction(cluster) {
-      const locations = cluster.getAllChildMarkers();
-      const count = locations.reduce((total, pin) => total + pin.options.alumniCount, 0);
-      cluster.options.title = `${count} alumni across ${locations.length} cities. Zoom in to explore.`;
-      return leaflet.divIcon({ className: 'alumni-map-cluster', html: String(count), iconSize: [38, 38] });
-    },
-  });
-
-  for (const [cityId, alumni] of alumniByCity) {
-    const city = cities[cityId];
+  function createMarker(city, alumni) {
     const roles = new Set(alumni.map(person => person.role));
     const title = `${city.name} · ${alumni.length} ${alumni.length === 1 ? 'alumnus or alumna' : 'alumni'}`;
     const size = alumni.length > 1 ? 34 : 25;
@@ -105,19 +81,95 @@
       list.append(item);
     }
     popup.append(heading, list);
-    pin.bindPopup(popup, { maxHeight: 250, minWidth: 180, maxWidth: 310 });
+    pin.bindPopup(popup, { maxHeight: 170, minWidth: 175, maxWidth: 260 });
     pin.on('popupopen', () => {
       if (document.activeElement === pin.getElement()) popup.querySelector('a').focus({ preventScroll: true });
     });
-    markers.addLayer(pin);
+    return pin;
   }
 
-  function showAllLocations() {
-    map.closePopup();
-    map.fitBounds(markers.getBounds(), { padding: [34, 28], maxZoom: 8, animate: false });
+  let outlineRequest;
+  const webgl = leaflet.maplibreGL && document.createElement('canvas').getContext('webgl2');
+  webgl?.getExtension('WEBGL_lose_context')?.loseContext();
+
+  function addBasemap(map) {
+    function showOutline() {
+      outlineRequest ??= fetch(new URL('alumni-land.json', baseUrl)).then(response => {
+        if (!response.ok) throw new Error(`Land outline request failed (${response.status})`);
+        return response.json();
+      });
+      outlineRequest.then(outline => {
+        leaflet.geoJSON(outline, {
+          pane: 'tilePane', interactive: false, stroke: false, fillColor: '#eef1d4', fillOpacity: 1,
+          attribution: '<a href="https://www.naturalearthdata.com/">Natural Earth</a>',
+        }).addTo(map);
+      }).catch(error => console.error(error));
+    }
+
+    if (!webgl) {
+      showOutline();
+      return;
+    }
+
+    const layer = leaflet.maplibreGL({
+      style: new URL('alumni-basemap.json?v=1', baseUrl).href,
+      interactive: false,
+      attributionControl: {
+        customAttribution: '<a href="https://openfreemap.org/">OpenFreeMap</a> · © <a href="https://openmaptiles.org/">OpenMapTiles</a> · © <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
+      },
+    }).addTo(map);
+    const timer = setTimeout(() => {
+      layer.remove();
+      showOutline();
+    }, 10000);
+    layer.getMaplibreMap().once('load', () => clearTimeout(timer));
   }
 
-  showAllLocations();
-  markers.addTo(map);
-  document.getElementById('alumni-map-reset').addEventListener('click', showAllLocations);
+  function createMap(element, chinaOnly = false) {
+    const map = leaflet.map(element, {
+      scrollWheelZoom: false,
+      fadeAnimation: false,
+      minZoom: .5,
+      maxZoom: 14,
+      zoomSnap: chinaOnly ? .25 : 0,
+      maxBounds: [[-85.05, -360], [85.05, 360]],
+    });
+    const markers = leaflet.markerClusterGroup({
+      animate: false,
+      maxClusterRadius: chinaOnly ? 40 : 42,
+      showCoverageOnHover: false,
+      iconCreateFunction(cluster) {
+        const locations = cluster.getAllChildMarkers();
+        const count = locations.reduce((total, pin) => total + pin.options.alumniCount, 0);
+        cluster.options.title = `${count} alumni across ${locations.length} cities. Zoom in to explore.`;
+        return leaflet.divIcon({ className: 'alumni-map-cluster', html: String(count), iconSize: [38, 38] });
+      },
+    });
+    for (const [cityId, alumni] of alumniByCity) {
+      const city = cities[cityId];
+      if (!chinaOnly || city.inChina) markers.addLayer(createMarker(city, alumni));
+    }
+
+    function resetView() {
+      map.closePopup();
+      if (chinaOnly) {
+        map.fitBounds([[18, 73], [54, 135]], { padding: [26, 18], animate: false });
+      } else {
+        const zoom = map.getScaleZoom(map.getSize().x / map.options.crs.scale(0), 0);
+        map.setView([10, 0], zoom, { animate: false });
+      }
+    }
+    resetView();
+    addBasemap(map);
+    markers.addTo(map);
+    return resetView;
+  }
+
+  mapElement.closest('.alumni-map-section').hidden = false;
+  const resetWorld = createMap(mapElement);
+  const resetChina = createMap(chinaMapElement, true);
+  document.getElementById('alumni-map-reset').addEventListener('click', () => {
+    resetWorld();
+    resetChina();
+  });
 })();

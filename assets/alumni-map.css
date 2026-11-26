@@ -27,11 +27,19 @@
 #alumni-map-reset:focus-visible { outline: 2px solid var(--map-accent); outline-offset: 3px; }
 #alumni-map-description { margin-block: .45rem .9rem; }
 
-#alumni-map {
-  height: clamp(22rem, 55vh, 33rem);
+.alumni-map-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr);
+  gap: 1rem;
+}
+
+.alumni-map-grid h3 { margin: 0 0 .35rem; font-size: 1rem; }
+
+.alumni-map {
+  height: clamp(18rem, 35vh, 22rem);
   border: 1px solid var(--rule);
   isolation: isolate;
-  background: #edf2f5;
+  background: #75cbe4;
   font-family: system-ui, sans-serif;
 }
 
@@ -72,8 +80,8 @@
 .alumni-map-section [data-role="postdoc"] { --marker-color: #a33841; }
 .alumni-map-section [data-role="assistant"] { --marker-color: #946117; }
 
-#alumni-map .alumni-map-marker,
-#alumni-map .alumni-map-cluster {
+.alumni-map .alumni-map-marker,
+.alumni-map .alumni-map-cluster {
   display: grid;
   place-items: center;
   border-radius: 50%;
@@ -82,19 +90,19 @@
   font-weight: 700;
 }
 
-#alumni-map .alumni-map-marker {
+.alumni-map .alumni-map-marker {
   border: 2px solid #fff;
   background: var(--marker-color, var(--map-accent));
   color: #fff;
 }
 
-#alumni-map .alumni-map-cluster {
+.alumni-map .alumni-map-cluster {
   border: 2px solid var(--map-accent);
   background: #fff;
   color: var(--map-accent);
 }
 
-#alumni-map [role="button"]:focus-visible { outline: 2px solid var(--map-accent); outline-offset: 3px; }
+.alumni-map [role="button"]:focus-visible { outline: 2px solid var(--map-accent); outline-offset: 3px; }
 
 .alumni-map-popup h3 { margin: 0 1rem .45rem 0; font-size: .95rem; }
 .alumni-map-popup ul { margin: 0; padding: 0; list-style: none; }
@@ -107,5 +115,6 @@
 .alumni-table tr[data-alumni-city]:target > * { background: #f7f2f7; }
 
 @media (max-width: 42rem) {
-  #alumni-map { height: 22rem; }
+  .alumni-map-grid { grid-template-columns: minmax(0, 1fr); }
+  .alumni-map { height: 17rem; }
 }
